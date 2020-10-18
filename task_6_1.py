@@ -206,3 +206,21 @@ while line < len(matrix_a):
 print('matrix equal to the difference between matrix_a and matrix_b: ')
 for i in matrix_a_differ_b:
     print(i)
+
+# 14) new matrix equal to matrix_a multiplied by g
+
+g = int(input('Enter the number: '))
+matrix_a_multiply_g = []
+line = 0
+while line < len(matrix_a):
+    matrix_ab_line = []
+    col = 0
+    while col < len(matrix_a):
+        elem_multip = matrix_a[line][col] * g
+        matrix_ab_line.append(elem_multip)
+        col += 1
+    matrix_a_multiply_g.append(matrix_ab_line)
+    line += 1
+print('matrix_a multiplied by g: ')
+for i in matrix_a_multiply_g:
+    print(i)
