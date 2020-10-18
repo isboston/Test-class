@@ -80,3 +80,30 @@ for index in matrix:
         min_line_sum = line_sum
         min_line_index = line_index_count
 print(f'index of min row: {min_line_index}')
+
+# index min column
+
+min_row = 0
+column_summ = 0
+while min_row < len(matrix):
+    column = 0
+    while column < len(matrix):
+        column_summ += matrix[column][min_row]
+        column += 1
+    break
+min_column_sum = column_summ
+min_column_index = 0
+min_column_count = -1
+while min_row < len(matrix):
+    column_sum = 0
+    column = 0
+    while column < len(matrix):
+        column_sum += matrix[column][min_row]
+        column += 1
+    min_column_count += 1
+    if min_column_sum > column_sum:
+        min_column_sum = column_sum
+        min_column_index = min_column_count
+    min_row += 1
+
+print(f'index of min column: {min_column_index}')
