@@ -10,7 +10,7 @@ for i in range(n_size_matrix):
         print(j, end=' ')
     print()
 
-# max element of matrix
+# 2) max element of matrix
 
 max_elem = 0
 for i in range(n_size_matrix):
@@ -19,7 +19,7 @@ for i in range(n_size_matrix):
             max_elem = matrix[i][j]
 print(f'max element of matrix: {max_elem}')
 
-# min element of matrix
+# 3) min element of matrix
 
 min_elem = matrix[0][0]
 for i in range(n_size_matrix):
@@ -28,7 +28,7 @@ for i in range(n_size_matrix):
             min_elem = matrix[i][j]
 print(f'min element of matrix: {min_elem}')
 
-# sum elements of matrix
+# 4) sum elements of matrix
 
 sum_elem = 0
 for i in range(n_size_matrix):
@@ -36,7 +36,7 @@ for i in range(n_size_matrix):
         sum_elem += matrix[i][j]
 print(f'sum element of matrix: {sum_elem}')
 
-# index max row
+# 5) index max row
 
 max_sum = 0
 idx = -1
@@ -49,7 +49,7 @@ for i in range(n_size_matrix):
             idx = i
 print(f'index of max row: {idx}')
 
-# index max column
+# 6) index max column
 
 max_sum = 0
 idx = -1
@@ -62,7 +62,7 @@ for i in range(m_size_matrix):
             idx = i
 print(f'index of max column: {idx}')
 
-# index min row
+# 7) index min row
 
 line_index_count = -1
 min_sum = 0
@@ -81,7 +81,7 @@ for index in matrix:
         min_line_index = line_index_count
 print(f'index of min row: {min_line_index}')
 
-# index min column
+# 8) index min column
 
 min_row = 0
 column_summ = 0
@@ -108,7 +108,7 @@ while min_row < len(matrix):
 
 print(f'index of min column: {min_column_index}')
 
-# reset all elements above the main diagonal
+# 9) reset all elements above the main diagonal
 
 index_in_line = 0
 while index_in_line < len(matrix):
@@ -126,10 +126,11 @@ while index_in_line < len(matrix):
         position_index += 1
         index_in_col += 1
     index_in_line += 1
+print('reset all elements above the main diagonal: ')
 for i in matrix:
     print(i)
 
-# to zero all the elements below the main diagonal
+# 10) to zero all the elements below the main diagonal
 
 index_in_line = 0
 while index_in_line < len(matrix):
@@ -147,10 +148,11 @@ while index_in_line < len(matrix):
         position_index += 1
         index_in_col += 1
     index_in_line += 1
+print('to zero all the elements below the main diagonal: ')
 for i in matrix:
     print(i)
 
-# two new matrix_a and matrix_b matrices of random numbers with dimension n*m
+# 11) two new matrix_a and matrix_b matrices of random numbers with dimension n*m
 
 matrix_a = []
 matrix_b = []
@@ -164,9 +166,26 @@ for col in range(n_size_matrix):
     for line in range(m_size_matrix):
         matrix_line.append(randint(0, 9))
     matrix_b.append(matrix_line)
+print('two new matrix_a and matrix_b matrices of random numbers with dimension n*m: ')
 for i in matrix_a:
     print(i)
 print()
 for i in matrix_b:
     print(i)
 
+# 12) matrix equal to the sum of matrix_a and matrix_b
+
+matrix_a_plus_b = []
+line = 0
+while line < len(matrix_a):
+    matrix_ab_line = []
+    col = 0
+    while col < len(matrix_a):
+        elem_sum = matrix_a[line][col] + matrix_b[line][col]
+        matrix_ab_line.append(elem_sum)
+        col += 1
+    matrix_a_plus_b.append(matrix_ab_line)
+    line += 1
+print('matrix equal to the sum of matrix_a and matrix_b: ')
+for i in matrix_a_plus_b:
+    print(i)
