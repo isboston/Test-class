@@ -40,3 +40,14 @@ for i in range(n_size_matrix):
             max_sum = sum_row
             idx = i
 print(f'index of max row: {idx}')
+# index max column
+max_sum = 0
+idx = -1
+for i in range(m_size_matrix):
+    sum_col = 0
+    for j in range(n_size_matrix):
+        sum_col += matrix[j][i]
+        if sum_col > max_sum:
+            max_sum = sum_col
+            idx = i
+print(f'index of max column: {idx}')
