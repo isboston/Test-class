@@ -16,3 +16,10 @@ for i in range(n_size_matrix):
         if matrix[i][j] > max_elem:
             max_elem = matrix[i][j]
 print(f'max element of matrix: {max_elem}')
+# min element of matrix
+min_elem = matrix[0][0]
+for i in range(n_size_matrix):
+    for j in range(m_size_matrix):
+        if matrix[i][j] < min_elem:
+            min_elem = matrix[i][j]
+print(f'min element of matrix: {min_elem}')
