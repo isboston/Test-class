@@ -9,27 +9,35 @@ for i in range(n_size_matrix):
     for j in matrix[i]:
         print(j, end=' ')
     print()
+
 # max element of matrix
+
 max_elem = 0
 for i in range(n_size_matrix):
     for j in range(m_size_matrix):
         if matrix[i][j] > max_elem:
             max_elem = matrix[i][j]
 print(f'max element of matrix: {max_elem}')
+
 # min element of matrix
+
 min_elem = matrix[0][0]
 for i in range(n_size_matrix):
     for j in range(m_size_matrix):
         if matrix[i][j] < min_elem:
             min_elem = matrix[i][j]
 print(f'min element of matrix: {min_elem}')
+
 # sum elements of matrix
+
 sum_elem = 0
 for i in range(n_size_matrix):
     for j in range(m_size_matrix):
         sum_elem += matrix[i][j]
 print(f'sum element of matrix: {sum_elem}')
+
 # index max row
+
 max_sum = 0
 idx = -1
 for i in range(n_size_matrix):
@@ -40,7 +48,9 @@ for i in range(n_size_matrix):
             max_sum = sum_row
             idx = i
 print(f'index of max row: {idx}')
+
 # index max column
+
 max_sum = 0
 idx = -1
 for i in range(m_size_matrix):
@@ -51,3 +61,22 @@ for i in range(m_size_matrix):
             max_sum = sum_col
             idx = i
 print(f'index of max column: {idx}')
+
+# index min row
+
+line_index_count = -1
+min_sum = 0
+min_line_index = 0
+for line in matrix:
+    for column in line:
+        min_sum += column
+    break
+for index in matrix:
+    line_sum = 0
+    for elem in index:
+        line_sum += elem
+    line_index_count += 1
+    if line_sum < min_sum:
+        min_line_sum = line_sum
+        min_line_index = line_index_count
+print(f'index of min row: {min_line_index}')
