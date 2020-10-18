@@ -29,3 +29,14 @@ for i in range(n_size_matrix):
     for j in range(m_size_matrix):
         sum_elem += matrix[i][j]
 print(f'sum element of matrix: {sum_elem}')
+# index max row
+max_sum = 0
+idx = -1
+for i in range(n_size_matrix):
+    sum_row = 0
+    for j in range(m_size_matrix):
+        sum_row += matrix[i][j]
+        if sum_row > max_sum:
+            max_sum = sum_row
+            idx = i
+print(f'index of max row: {idx}')
