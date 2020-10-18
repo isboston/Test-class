@@ -189,3 +189,20 @@ while line < len(matrix_a):
 print('matrix equal to the sum of matrix_a and matrix_b: ')
 for i in matrix_a_plus_b:
     print(i)
+
+# 13) matrix equal to the difference between matrix_a and matrix_b
+
+matrix_a_differ_b = []
+line = 0
+while line < len(matrix_a):
+    matrix_ab_line = []
+    col = 0
+    while col < len(matrix_a):
+        elem_diff = matrix_a[line][col] - matrix_b[line][col]
+        matrix_ab_line.append(elem_diff)
+        col += 1
+    matrix_a_differ_b.append(matrix_ab_line)
+    line += 1
+print('matrix equal to the difference between matrix_a and matrix_b: ')
+for i in matrix_a_differ_b:
+    print(i)
