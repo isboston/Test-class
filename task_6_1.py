@@ -23,3 +23,9 @@ for i in range(n_size_matrix):
         if matrix[i][j] < min_elem:
             min_elem = matrix[i][j]
 print(f'min element of matrix: {min_elem}')
+# sum elements of matrix
+sum_elem = 0
+for i in range(n_size_matrix):
+    for j in range(m_size_matrix):
+        sum_elem += matrix[i][j]
+print(f'sum element of matrix: {sum_elem}')
