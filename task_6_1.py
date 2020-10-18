@@ -149,3 +149,24 @@ while index_in_line < len(matrix):
     index_in_line += 1
 for i in matrix:
     print(i)
+
+# two new matrix_a and matrix_b matrices of random numbers with dimension n*m
+
+matrix_a = []
+matrix_b = []
+for col in range(n_size_matrix):
+    matrix_line = []
+    for line in range(m_size_matrix):
+        matrix_line.append(randint(0, 9))
+    matrix_a.append(matrix_line)
+for col in range(n_size_matrix):
+    matrix_line = []
+    for line in range(m_size_matrix):
+        matrix_line.append(randint(0, 9))
+    matrix_b.append(matrix_line)
+for i in matrix_a:
+    print(i)
+print()
+for i in matrix_b:
+    print(i)
+
