@@ -9,3 +9,10 @@ for i in range(n_size_matrix):
     for j in matrix[i]:
         print(j, end=' ')
     print()
+# max element of matrix
+max_elem = 0
+for i in range(n_size_matrix):
+    for j in range(m_size_matrix):
+        if matrix[i][j] > max_elem:
+            max_elem = matrix[i][j]
+print(f'max element of matrix: {max_elem}')
