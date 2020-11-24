@@ -23,18 +23,17 @@ with open(new_file, 'r') as csvfile:
         for index, age in enumerate(row):
             if index == 2:
                 ages.append(int(age))
-    print(ages)
 
 report_fields = ['1-12', '13-18', '19-25', '26-40', '40+']
 report_rows = [[0, 0, 0, 0, 0]]
 for num in ages:
-    if 12 >= num >= 1:
+    if 1 <= num <= 12:
         report_rows[0][0] += 1
-    elif 18 >= num >= 13:
+    elif 13 <= num <= 18:
         report_rows[0][1] += 1
-    elif 25 >= num >= 19:
+    elif 19 <= num <= 25:
         report_rows[0][2] += 1
-    elif 40 >= num >= 26:
+    elif 26 <= num <= 40:
         report_rows[0][3] += 1
     elif num > 40:
         report_rows[0][4] += 1
