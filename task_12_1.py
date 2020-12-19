@@ -1,103 +1,86 @@
-class Pet:
-    __counter = 0
-
-    def __init__(self, name, age, master, weight, height):
-        self.name = name
-        self.age = age
-        self.master = master
-        self.weight = weight
-        self.height = height
-        Pet.__counter += 1
-
-    @classmethod
-    def get_counter(cls):
-        return cls.__counter
-
-    def change_weight(self, diff=0.2):
-        self.weight += diff
-
-    def change_height(self, height):
-        self.height = height
-        if height:
-            self.height = height
+class MyTime:
+    def __init__(self, *args):
+        if len(args) == 3:
+            self.hours, self.minutes, self.seconds = args
+        elif len(args) == 1 and isinstance(args[0], str):
+            self.hours, self.minutes, self.seconds = map(int, args[0].split("-"))
+        elif len(args) == 1 and isinstance(args[0], MyTime):
+            my_time = args[0]
+            self.hours, self.minutes, self.seconds = my_time.hours, my_time.minutes, my_time.seconds
         else:
-            self.height += 0.2
+            self.hours, self.minutes, self.seconds = 0, 0, 0
+        self.hours, self.minutes, self.seconds = self.seconds_to_time(self.time_to_seconds())
 
-    def voice(self):
-        pass
+    def __eq__(self, other):
+        return all([
+            self.hours == other.hours,
+            self.minutes == other.minutes,
+            self.seconds == other.seconds
+        ])
 
-    def run(self):
-        print("Run!")
+    def time_to_seconds(self):
+        return self.hours * 3600 + self.minutes * 60 + self.seconds
 
-    def jump(self, height):
-        print(f"Jump\n{height}!")
+    def seconds_to_time(self, seconds):
+        hours = seconds // 3600
+        minutes = seconds // 60 % 60
+        seconds = seconds % 60
+        return hours, minutes, seconds
 
-    def sleep(self):
-        print("Sleep...")
+    def __ne__(self, other):
+        return not (self == other)
 
-    def birthday(self):
-        self.age += 1
+    def __add__(self, other):
+        total_seconds = self.time_to_seconds() + other.time_to_seconds()
+        hours, minutes, seconds = self.seconds_to_time(total_seconds)
+        return MyTime(hours, minutes, seconds)
 
+    def __sub__(self, other):
+        total_seconds = self.time_to_seconds() - other.time_to_seconds()
+        hours, minutes, seconds = self.seconds_to_time(total_seconds)
+        return MyTime(hours, minutes, seconds)
 
-class Dog(Pet):
-    def voice(self):
-        print("Woof-woof")
+    def __str__(self):
+        s = f'{self.hours}-{self.minutes}-{self.seconds}'
+        return s
 
-    def jump(self, height):
-        if height > 0.5:
-            print("Dogs cannot jump so high")
-        else:
-            super().jump(height)
+    def __lt__(self, other):
+        return self.time_to_seconds() < other.time_to_seconds()
 
+    def __gt__(self, other):
+        return self.time_to_seconds() > other.time_to_seconds()
 
-class Cat(Pet):
-    def voice(self):
-        print("Meow")
+    def __le__(self, other):
+        return self.time_to_seconds() <= other.time_to_seconds()
 
-    def jump(self, height):
-        if height > 0.5:
-            print("Cats cannot jump so high")
-        else:
-            super().jump(height)
+    def __ge__(self, other):
+        return self.time_to_seconds() >= other.time_to_seconds()
 
-
-class Parrot(Pet):
-    def __init__(self, name, age, master, weight, height, species):
-        super().__init__(name, age, master, weight, height)
-        self.species = species
-
-    def voice(self):
-        print("You dummy")
-
-    def fly(self):
-        if self.weight > 0.1:
-            print("This parrot cannot fly")
-        else:
-            print("Flies away...")
-
-    def jump(self, height):
-        if height > 0.5:
-            print("Parrots cannot jump so high")
-        else:
-            super().jump(height)
-
-    def change_weight(self, diff=0.05):
-        self.weight += diff
-
-    def change_height(self, height=0.05):
-        self.height += height
+    def __mul__(self, other):
+        total_seconds = self.time_to_seconds() + other
+        hours, minutes, seconds = self.seconds_to_time(total_seconds)
+        return MyTime(hours, minutes, seconds)
 
 
-def animals_voice(animals):
-    for animal in animals:
-        animal.voice()
+def main():
+    default_time = MyTime()
+    print(default_time)
+    int_time = MyTime(12, 55, 12)
+    print(int_time)
+    str_time = MyTime('2-66-55')
+    print(str_time)
+
+    print(int_time + str_time)
+    print(int_time - str_time)
+    print(str_time * 2)
+
+    print(str_time == int_time)
+    print(str_time != int_time)
+    print(str_time >= int_time)
+    print(str_time <= int_time)
+    print(str_time > int_time)
+    print(str_time < int_time)
 
 
-parrot = Parrot("Tepa", 3, "Pumba", 0.2, 10, "Some parrot")
-parrot.jump(0.6)
-
-dog = Dog("Fuf", 3, "Pumba", 5, 50)
-dog.jump(0.5)
-
-cat = Cat("Tepa", 3, "Pumba", 4, 30)
-animals_voice([dog, parrot, cat])
+if __name__ == "__main__":
+    main()
